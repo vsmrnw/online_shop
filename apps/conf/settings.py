@@ -4,7 +4,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
-environ.Env.read_env("/code/.env.prod")
+environ.Env.read_env(".env")
 SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = int(env('DEBUG', default=1))
