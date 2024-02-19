@@ -5,20 +5,24 @@ from django.shortcuts import render, redirect, reverse, \
     get_object_or_404
 from orders.models import Order
 
-# create stripe Instance
+# create the Stripe instance
 stripe.api_key = settings.STRIPE_SECRET_KEY
 stripe.api_version = settings.STRIPE_API_VERSION
 
 
 def payment_process(request):
-    order_id = request.GET.get('order_id', None)
+    order_id = request.session.get('order_id', None)
     order = get_object_or_404(Order, id=order_id)
+
     if request.method == 'POST':
-        success_url = request.build_absolute_uri(reverse('payment:completed'))
-        cancel_url = request.build_absolute_uri(reverse('payment:cancelled'))
+        success_url = request.build_absolute_uri(
+            reverse('payment:completed'))
+        cancel_url = request.build_absolute_uri(
+            reverse('payment:canceled'))
+
         session_data = {
             'mode': 'payment',
-            'client_reference_id': order_id,
+            'client_reference_id': order.id,
             'success_url': success_url,
             'cancel_url': cancel_url,
             'line_items': []
@@ -34,8 +38,11 @@ def payment_process(request):
                 },
                 'quantity': item.quantity,
             })
+
         session = stripe.checkout.Session.create(**session_data)
+
         return redirect(session.url, code=303)
+
     else:
         return render(request, 'payment/process.html', locals())
 
