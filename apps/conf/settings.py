@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    "payment.apps.PaymentConfig"
 ]
 
 MIDDLEWARE = [
@@ -98,4 +99,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# SMTP settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Stripe settings
+STRIPE_PUBLISHABLE_KEY = env("STRIPE_PUBLISHABLE_KEY")  # public key
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")  # private key
+STRIPE_API_VERSION = '2023-10-16'
