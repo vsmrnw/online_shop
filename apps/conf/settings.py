@@ -24,7 +24,9 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     "payment.apps.PaymentConfig",
     "coupons.apps.CouponsConfig",
+    # third party
     'rosetta',
+    'parler',
 ]
 
 MIDDLEWARE = [
@@ -99,6 +101,17 @@ LANGUAGES = [
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'ru'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
 
 TIME_ZONE = 'UTC'
 
