@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-26 13:16+0300\n"
-"PO-Revision-Date: 2024-02-26 11:11+0000\n"
+"POT-Creation-Date: 2024-02-27 12:23+0300\n"
+"PO-Revision-Date: 2024-02-27 09:27+0000\n"
 "Last-Translator:   <admin@admin.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -105,6 +105,23 @@ msgstr "Английский"
 msgid "Russian"
 msgstr "Русский"
 
+#: conf/urls.py:11
+msgid "cart/"
+msgstr "корзина/"
+
+#: conf/urls.py:12
+msgid "orders/"
+msgstr "заказы/"
+
+#: conf/urls.py:13
+msgid "payment/"
+msgstr "оплата/"
+
+#: conf/urls.py:14
+#| msgid "Coupon"
+msgid "coupons/"
+msgstr "промокоды/"
+
 #: coupons/forms.py:6
 msgid "Coupon"
 msgstr "Промокод"
@@ -155,12 +172,24 @@ msgstr ""
 msgid "Pay now"
 msgstr "Оплатить сейчас"
 
+#: payment/urls.py:9
+msgid "process/"
+msgstr "процесс/"
+
+#: payment/urls.py:10
+msgid "completed/"
+msgstr "завершенный/"
+
+#: payment/urls.py:11
+#| msgid "Payment canceled"
+msgid "canceled/"
+msgstr "отмена оплаты/"
+
 #: shop/templates/shop/base.html:7 shop/templates/shop/base.html:12
 msgid "My shop"
 msgstr "Мой магазин"
 
 #: shop/templates/shop/base.html:18
-#| msgid "Add to cart"
 msgid "Your cart"
 msgstr "Ваша корзина"
 

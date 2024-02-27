@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-26 13:16+0300\n"
+"POT-Creation-Date: 2024-02-27 12:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,6 +97,22 @@ msgstr ""
 msgid "Russian"
 msgstr ""
 
+#: conf/urls.py:11
+msgid "cart/"
+msgstr ""
+
+#: conf/urls.py:12
+msgid "orders/"
+msgstr ""
+
+#: conf/urls.py:13
+msgid "payment/"
+msgstr ""
+
+#: conf/urls.py:14
+msgid "coupons/"
+msgstr ""
+
 #: coupons/forms.py:6
 msgid "Coupon"
 msgstr ""
@@ -143,6 +159,18 @@ msgstr ""
 
 #: payment/templates/payment/process.html:63
 msgid "Pay now"
+msgstr ""
+
+#: payment/urls.py:9
+msgid "process/"
+msgstr ""
+
+#: payment/urls.py:10
+msgid "completed/"
+msgstr ""
+
+#: payment/urls.py:11
+msgid "canceled/"
 msgstr ""
 
 #: shop/templates/shop/base.html:7 shop/templates/shop/base.html:12
