@@ -3,12 +3,10 @@ import environ
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 env = environ.Env()
 environ.Env.read_env(".env")
 SECRET_KEY = env("SECRET_KEY")
-
-DEBUG = int(env('DEBUG', default=1))
 
 ALLOWED_HOSTS = []
 
@@ -62,14 +60,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'conf.wsgi.application'
-
-# Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 # Redis settings
 REDIS_HOST = env('REDIS_HOST')
