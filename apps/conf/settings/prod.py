@@ -4,7 +4,7 @@ DEBUG = False
 ADMINS = [
     env.tuple('ADMINS'),
 ]
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['online-shopproject.com', 'www.online-shopproject.com']
 
 DATABASES = {
     'default': {
@@ -16,3 +16,8 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+# Security settings
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
