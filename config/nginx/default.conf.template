@@ -5,6 +5,14 @@ upstream uwsgi_app {
 server {
 	 listen 80;
 	 server_name www.online-shopproject.com online-shopproject.com;
+     return 301 https://$host$request_uri;
+}
+
+server {
+	 listen 443 ssl;
+     ssl_certificate /code/apps/ssl/online-shopproject.crt;
+     ssl_certificate_key /code/apps/ssl/online-shopproject.key;
+	 server_name www.online-shopproject.com online-shopproject.com;
 	 error_log stderr warn;
 	 access_log /dev/stdout main;
 
@@ -12,4 +20,10 @@ server {
 	     include /etc/nginx/uwsgi_params;
 	     uwsgi_pass uwsgi_app;
 	 }
+	 location /static/ {
+         alias /code/apps/static/;
+     }
+     location /media/ {
+         alias /code/apps/media/;
+ }
 }
