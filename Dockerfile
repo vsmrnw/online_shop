@@ -9,4 +9,4 @@ ADD requirements.txt /code/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY /apps/.env /code/apps/.env
+COPY .env /code/apps/.env
