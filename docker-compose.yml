@@ -8,12 +8,38 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASS}
+    networks:
+      - django-network
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ENV_FILE: .env
+    image: backend:latest
+    command: celery -A conf worker -l info
+    depends_on:
+      - db
+      - cache
+    volumes:
+      - ./apps/:/code/
+      - .:/code/media
+      - .:/code/static
+      - .env:/code/.env
+    networks:
+      - django-network
 
   cache:
-    image: redis:7.0.4
+    image: rabbitmq:latest
     restart: always
     volumes:
       - ./data/cache:/data
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+    networks:
+      - django-network
 
   web:
     env_file:
@@ -28,9 +54,14 @@ services:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=conf.settings.prod
+      - CELERY_BROKER_URL = 'amqp://cache:5672'
+      - CELERY_RESULT_BACKEND = 'amqp://cache:5672'
     depends_on:
       - db
       - cache
+    networks:
+      - django-network
+
   nginx:
     image: nginx:1.23.1
     restart: always
@@ -40,3 +71,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - django-network
+
+networks:
+  django-network:
+    driver: bridge
