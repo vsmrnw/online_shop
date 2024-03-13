@@ -54,8 +54,6 @@ services:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=conf.settings.prod
-      - CELERY_BROKER_URL = 'amqp://cache:5672'
-      - CELERY_RESULT_BACKEND = 'amqp://cache:5672'
     depends_on:
       - db
       - cache
