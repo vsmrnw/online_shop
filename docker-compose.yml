@@ -52,8 +52,6 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-    environment:
-      - DJANGO_SETTINGS_MODULE=conf.settings.prod
     depends_on:
       - db
       - cache
